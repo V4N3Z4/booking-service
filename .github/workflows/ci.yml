@@ -6,17 +6,12 @@ on:
       - main
 
 jobs:
-  vanessatest:
-    runs-on: ubuntu-latest
-    service:
+  Vanessatest:
+    Service:
       mysql:
-        image: mysql:8
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: testdb
         ports:
           -3306:3306
-        options: >-
+        options:
           --health_cmd="mysqladmin ping -h localhost -uroot -proot"
           --health-interval=10s
           --health-timeout=5s
@@ -32,7 +27,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: maven
+          cache: "maven"
 
       - name: Build with test
         run: mvn test
@@ -41,3 +36,4 @@ jobs:
         SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/testdb
         SPRING_DATASOURCE_USERNAME: root
         SPRING_DATASOURCE_PASSWORD: root
+
