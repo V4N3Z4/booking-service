@@ -1,0 +1,22 @@
+# Booking Service
+
+Booking-service är bokningstjänsten från Backend 1, nu ombyggd som microservice.
+
+## Funktioner
+- Skapa bokning
+- Hämta bokningar
+- Hantera rum
+- Förhindra dubbelbokningar
+
+## Kommunikation med customer-service När en bokning skapas frågar booking-service customer-service om kunden finns. Booking-service sparar endast kundens ID, inte kunddata.
+
+## Databas Booking-service har en egen databas för rum och bokningar.
+## Starta tjänsten
+### Lokalt mvn
+Spring-boot:run
+
+### Docker docker build -t booking-service .
+docker run -p 8081:8081 booking-service
+
+### Docker Compose (hela systemet)
+docker compose up
